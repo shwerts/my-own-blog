@@ -1,5 +1,6 @@
 :root {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --paypal-midnight-blue: #012169;
 }
 
 body {
@@ -20,15 +21,16 @@ header {
 
 header > * {flex: 2 1 auto;}
 
-header a {
+:is(footer, header) a {
   text-decoration: none;
   color: inherit;
   display: block;
 }
 
 .logo {
-  padding: .53rem 0;
+  padding-block: .53rem;
   text-align: center;
+  font-weight: bold;
 }
 .logo a {
   display: inline-block;
@@ -42,13 +44,14 @@ header .logo a:is(:hover, :focus) {
     -4px -4px 8px;
 }
 
-.main-nav {flex: 1 1 auto;}
+.main-nav {flex: 1 1 100px;}
 .main-nav ul {
   list-style: none;
   display: flex;
   padding: 0;
   margin: 0;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .main-nav li a {
@@ -58,29 +61,44 @@ header .logo a:is(:hover, :focus) {
 }
 
 .main-nav li a:is(:hover, :focus) {
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgb(0, 123, 255),
-      blue
-    );
+  background-image: linear-gradient(
+    to bottom,
+    dodgerblue,
+    blue
+  );
+}
+
+.main-nav .log_on a {
+  background-image: linear-gradient(
+    to bottom,
+    firebrick,
+    maroon
+  );
+}
+.main-nav .log_on a:is(:hover, :focus) {
+  background-image: linear-gradient(
+    to bottom,
+    tomato,
+    red
+  );
 }
 
 header button {display: none;}
 
-main {margin-bottom: 2rem;}
+main {
+  inline-size: 90vw;
+  margin: 0 auto 2rem;
+}
 
 main h1 {
   text-align: center;
   margin: 1rem;
 }
 
-hr {margin: 2rem 0;}
+hr {margin-block: 2rem;}
 
 .greetings {
-  background-color: #bbb;
-  width: 90vw;
-  margin: auto;
+  background-color: lightgray;
   padding: 1rem;
 }
 
@@ -91,11 +109,12 @@ footer {
   padding: 1rem;
   justify-content: space-around;
   align-items: center;
-  margin-top: auto;
+  margin-block-start: auto;
   background-color: gray;
 }
 
 footer ul {
+  text-decoration: underline;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -105,8 +124,6 @@ footer ul {
   justify-content: space-between;
 }
 
-footer a {color: inherit;}
-
 .donate {
   text-decoration: none;
   background-color: orange;
@@ -114,20 +131,20 @@ footer a {color: inherit;}
   border-radius: 3rem;
   font: italic bold small-caps 1.2rem 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: .4px;
-  color: #012169;
+  color: var(--paypal-midnight-blue);
   box-shadow:
     inset 0px 6px 4px #fffd,
     inset 0px -6px 4px #0004;
   border: 1px solid orange;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: calc(48em - 1px)) {
   .main-nav {display: none;}
   header > * {flex: 1 1 auto;}
   .empty {display: none;}
 
   header button {
-    border: 2px solid black;
+    border: 2px solid;
     border-radius: .6rem;
     display: flex;
     background-color: transparent;
