@@ -15,18 +15,18 @@ header {
     navy
     );
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   color: #eee;
 }
 
-header > * {flex: 2 1 auto;}
-
-:is(footer, header) a {
+header a,
+footer a {
   text-decoration: none;
   color: inherit;
   display: block;
 }
 
+header .logo {margin-inline-start: 1rem;}
 .logo {
   padding-block: .53rem;
   text-align: center;
@@ -44,58 +44,37 @@ header .logo a:is(:hover, :focus) {
     -4px -4px 8px;
 }
 
-.main-nav {flex: 1 1 100px;}
-.main-nav ul {
-  list-style: none;
+.main-nav {
+  display: none;
+}
+
+header button {
+  border: 2px solid;
+  border-radius: 9.5px;
   display: flex;
-  padding: 0;
-  margin: 0;
+  background-color: transparent;
+  flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  gap: .3rem;
+  flex-grow: 0;
+  margin-inline-end: 1rem;
+}
+header button span {
+  font-size: .6rem;
+  width: 2rem;
+  height: 1ch;
+  background-color: #fff;
+  border-radius: 1rem;
 }
 
-.main-nav li a {
-  text-align: center;
-  padding: .8rem;
-  border: 1px solid black;
-}
-
-.main-nav li a:is(:hover, :focus) {
-  background-image: linear-gradient(
-    to bottom,
-    dodgerblue,
-    blue
-  );
-}
-
-.main-nav .log_on a {
-  background-image: linear-gradient(
-    to bottom,
-    firebrick,
-    maroon
-  );
-}
-.main-nav .log_on a:is(:hover, :focus) {
-  background-image: linear-gradient(
-    to bottom,
-    tomato,
-    red
-  );
-}
-
-header button {display: none;}
-
-main {
-  inline-size: 90vw;
-  margin: 0 auto 2rem;
-}
+main {margin: 0 auto 2rem;}
 
 main h1 {
   text-align: center;
-  margin: 1rem;
+  margin: 1rem 0 0;
 }
 
-hr {margin-block: 2rem;}
+hr {margin-block: max(2vw, 16px);}
 
 .greetings {
   background-color: lightgray;
@@ -138,26 +117,49 @@ footer ul {
   border: 1px solid orange;
 }
 
-@media screen and (max-width: calc(48em - 1px)) {
-  .main-nav {display: none;}
-  header > * {flex: 1 1 auto;}
-  .empty {display: none;}
+@media screen and (min-width: 48em) {
+  header {justify-content: space-around;}
 
-  header button {
-    border: 2px solid;
-    border-radius: .6rem;
+  header .logo {margin-inline-start: 0;}
+
+  .main-nav {display: block;}
+  .main-nav ul {
+    list-style: none;
     display: flex;
-    background-color: transparent;
-    flex-direction: column;
+    padding: 0;
+    margin: 0;
     justify-content: center;
-    gap: .3rem;
-    flex-grow: 0;
+    gap: 2rem;
   }
-  header button span {
-    font-size: .6rem;
-    width: 2rem;
-    height: 1ch;
-    background-color: #fff;
-    border-radius: 1rem;
+  .main-nav a {
+    text-align: center;
+    padding: .8rem;
+    border: 1px solid black;
   }
+  .main-nav a:is(:hover, :focus) {
+    background-image: linear-gradient(
+      to bottom,
+      dodgerblue,
+      blue
+    );
+  }
+  
+  .log_on a {
+    background-image: linear-gradient(
+      to bottom,
+      firebrick,
+      maroon
+    );
+  }
+  .log_on a:is(:hover, :focus) {
+    background-image: linear-gradient(
+      to bottom,
+      tomato,
+      red
+    );
+  }
+
+  header button {display: none;}
+
+  main {inline-size: 90vw;}
 }
