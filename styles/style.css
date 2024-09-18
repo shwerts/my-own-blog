@@ -1,13 +1,22 @@
+/* 
+  Every component begins with 'The'
+*/
+
+/* The general settings */
 :root {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --paypal-midnight-blue: #012169;
 }
 
+
+/* The webpage's global layout */
 body {
   display: flex;
   flex-direction: column;
 }
 
+
+/* The header */
 header {
   background-image: linear-gradient(
     to bottom,
@@ -26,6 +35,8 @@ footer a {
   display: block;
 }
 
+
+/* Header. The logo */
 header .logo {margin-inline-start: 1rem;}
 .logo {
   padding-block: .53rem;
@@ -44,10 +55,14 @@ header .logo a:is(:hover, :focus) {
     -4px -4px 8px;
 }
 
+
+/* Header. The main navigation */
 .main-nav {
   display: none;
 }
 
+
+/* Main navigation, The mobile version */
 header button {
   border: 2px solid;
   border-radius: 9.5px;
@@ -59,6 +74,7 @@ header button {
   flex-grow: 0;
   margin-inline-end: 1rem;
 }
+
 header button span {
   font-size: .6rem;
   width: 2rem;
@@ -67,8 +83,14 @@ header button span {
   border-radius: 1rem;
 }
 
-main {margin: 0 auto 2rem;}
 
+/* The content wrapper */
+.content-wrapper {margin-block-end: 2rem;}
+
+aside {display: none;}
+
+
+/* The main content */
 main h1 {
   text-align: center;
   margin: 1rem 0 0;
@@ -81,6 +103,8 @@ hr {margin-block: max(2vw, 16px);}
   padding: 1rem;
 }
 
+
+/* The footer */
 footer {
   display: flex;
   flex-wrap: wrap;
@@ -117,11 +141,22 @@ footer ul {
   border: 1px solid orange;
 }
 
+
+/*
+  The wide layout.
+  Every component's rulesets ends with 'wider screen'
+*/
 @media screen and (min-width: 48em) {
+
+  /* The header (wider screen) */
   header {justify-content: space-around;}
 
+
+  /* The logo (wider screen) */
   header .logo {margin-inline-start: 0;}
 
+
+  /* The main navigation (wider screen) */
   .main-nav {display: block;}
   .main-nav ul {
     list-style: none;
@@ -143,7 +178,9 @@ footer ul {
       blue
     );
   }
-  
+
+
+  /* Main navigation. The login option (wider screen) */
   .log_on a {
     background-image: linear-gradient(
       to bottom,
@@ -159,7 +196,30 @@ footer ul {
     );
   }
 
+
+  /* The mobile main navigation (wider screen) */
   header button {display: none;}
 
-  main {inline-size: 90vw;}
+
+  /* The content wrapper (wider screen) */
+  .content-wrapper {
+    display: flex;
+    gap: 1rem;
+  }
+  .content-wrapper > * {flex: 1;}
+
+
+  /* The aside content (wider screen) */
+  aside {
+    display: block;
+    padding-block-start: 3rem;
+  }
+  aside ol {
+    margin: auto 2rem;
+    padding: 0;
+  }
+
+
+  /* The main content (wider screen) */
+  .content-wrapper main {flex: 6;}
 }
