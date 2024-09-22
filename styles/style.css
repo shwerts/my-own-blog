@@ -113,9 +113,12 @@ hr {margin-block: min(6vw, 1.5rem);}
 }
 
 .card {
+  text-decoration: none;
+  color: unset;
   background: linear-gradient(#AD833A, #6DCBB4);
   padding: 1rem;
   border-radius: 1.5rem;
+  border: 2px solid #000;
 }
 
 .card header {text-align: center; font-weight: bolder;}
