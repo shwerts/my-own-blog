@@ -4,7 +4,6 @@
 
 /* The general settings */
 :root {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --paypal-midnight-blue: #012169;
 }
 
@@ -17,7 +16,7 @@ body {
 
 
 /* The header */
-header {
+.hero {
   background-image: linear-gradient(
     to bottom,
     blue,
@@ -28,7 +27,7 @@ header {
   color: #eee;
 }
 
-header a,
+.hero a,
 footer a {
   text-decoration: none;
   color: inherit;
@@ -37,7 +36,7 @@ footer a {
 
 
 /* Header. The logo */
-header .logo {margin-inline-start: 1rem;}
+.hero .logo {margin-inline-start: 1rem;}
 .logo {
   padding-block: .53rem;
   text-align: center;
@@ -49,7 +48,7 @@ header .logo {margin-inline-start: 1rem;}
   font-size: 1.5rem;
   transition: .5s text-shadow;
 }
-header .logo a:is(:hover, :focus) {
+.hero .logo a:is(:hover, :focus) {
   text-shadow:
     -2px -2px 4px,
     -4px -4px 8px;
@@ -63,7 +62,7 @@ header .logo a:is(:hover, :focus) {
 
 
 /* Main navigation, The mobile version */
-header button {
+.hero button {
   border: 2px solid;
   border-radius: 9.5px;
   display: flex;
@@ -75,7 +74,7 @@ header button {
   margin-inline-end: 1rem;
 }
 
-header button span {
+.hero button span {
   font-size: .6rem;
   width: 2rem;
   height: 1ch;
@@ -91,17 +90,37 @@ aside {display: none;}
 
 
 /* The main content */
+main {padding-inline: 16px;}
+
 main h1 {
   text-align: center;
   margin: 1rem 0 0;
 }
 
-hr {margin-block: max(2vw, 16px);}
+hr {margin-block: min(6vw, 1.5rem);}
 
 .greetings {
   background-color: lightgray;
   padding: 1rem;
 }
+
+
+/* Blogs list */
+.blog-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4vh;
+}
+
+.card {
+  background: linear-gradient(#AD833A, #6DCBB4);
+  padding: 1rem;
+  border-radius: 1.5rem;
+}
+
+.card header {text-align: center; font-weight: bolder;}
+
+.latest {background: linear-gradient(#21BAAC, #23B67E);}
 
 
 /* The footer */
@@ -149,16 +168,17 @@ footer ul {
 @media screen and (min-width: 48em) {
 
   /* The header (wider screen) */
-  header {justify-content: space-around;}
+  .hero {justify-content: space-evenly;}
 
 
   /* The logo (wider screen) */
-  header .logo {margin-inline-start: 0;}
+  .hero .logo {margin-inline-start: 0;}
 
 
   /* The main navigation (wider screen) */
   .main-nav {display: block;}
   .main-nav ul {
+    min-height: 100%;
     list-style: none;
     display: flex;
     padding: 0;
@@ -167,6 +187,7 @@ footer ul {
     gap: 2rem;
   }
   .main-nav a {
+    height: 100%;
     text-align: center;
     padding: .8rem;
     border: 1px solid black;
@@ -198,7 +219,7 @@ footer ul {
 
 
   /* The mobile main navigation (wider screen) */
-  header button {display: none;}
+  .hero button {display: none;}
 
 
   /* The content wrapper (wider screen) */
@@ -222,4 +243,12 @@ footer ul {
 
   /* The main content (wider screen) */
   .content-wrapper main {flex: 6;}
+
+
+  /* Blogs list (wider screen) */
+  .card {
+    flex: 1 1 18rem;
+  }
+
+  .latest {flex-basis: 100%;}
 }
