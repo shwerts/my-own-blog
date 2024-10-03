@@ -1,5 +1,8 @@
 /* 
-  Every component begins with 'The'
+  Every component begins with 'The';
+
+  For wider screens (48em or 768px),
+  find '(wider screens)'
 */
 
 /* The general settings */
@@ -12,6 +15,7 @@
 body {
   display: flex;
   flex-direction: column;
+  gap: 2em;
 }
 
 
@@ -29,25 +33,25 @@ body {
 
 .hero a,
 footer a {
-  text-decoration: none;
   color: inherit;
   display: block;
 }
 
 
 /* Header. The logo */
-.hero .logo {margin-inline-start: 1rem;}
 .logo {
   padding-block: .53rem;
   text-align: center;
   font-weight: bold;
 }
 .logo a {
+  text-decoration: none;
   display: inline-block;
   width: min-content;
   font-size: 1.5rem;
   transition: .5s text-shadow;
 }
+.hero .logo {margin-inline-start: 1rem;}
 .hero .logo a:is(:hover, :focus) {
   text-shadow:
     -2px -2px 4px,
@@ -83,9 +87,6 @@ footer a {
 }
 
 
-/* The content wrapper */
-.content-wrapper {margin-block-end: 2rem;}
-
 aside {display: none;}
 
 
@@ -94,24 +95,28 @@ main {padding-inline: 16px;}
 
 main h1 {
   text-align: center;
-  margin: 1rem 0 0;
+  margin: 0;
 }
 
 hr {margin-block: min(6vw, 1.5rem);}
 
+
+/* Main content. The greeting text */
 .greetings {
   background-color: lightgray;
   padding: 1rem;
 }
 
 
-/* Blogs list */
+/* The blogs list */
 .blog-list {
   display: flex;
   flex-wrap: wrap;
   gap: 4vh;
 }
 
+
+/* Blogs list. The blog card */
 .card {
   text-decoration: none;
   color: unset;
@@ -121,6 +126,8 @@ hr {margin-block: min(6vw, 1.5rem);}
   border: 2px solid #000;
 }
 
+
+/* Blog card. The components */
 .card header {text-align: center; font-weight: bolder;}
 
 .latest {background: linear-gradient(#21BAAC, #23B67E);}
@@ -138,6 +145,8 @@ footer {
   background-color: gray;
 }
 
+
+/* Footer. The footer navigation */
 footer ul {
   text-decoration: underline;
   margin: 0;
@@ -149,6 +158,8 @@ footer ul {
   justify-content: space-between;
 }
 
+
+/* Footer. The donate button */
 .donate {
   text-decoration: none;
   background-color: orange;
@@ -166,20 +177,34 @@ footer ul {
 
 /*
   The wide layout.
-  Every component's rulesets ends with 'wider screen'
 */
+
 @media screen and (min-width: 48em) {
 
-  /* The header (wider screen) */
+  /* The body */
+  body {
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-areas:
+      "header header header"
+      "aside main ."
+      "footer footer footer";
+  }
+
+
+  /* The header; The main navigation */
+  header {grid-area: header;}
+
   .hero {justify-content: space-evenly;}
 
+  .hero button {display: none;}
 
-  /* The logo (wider screen) */
   .hero .logo {margin-inline-start: 0;}
 
 
-  /* The main navigation (wider screen) */
+  /* The main navigation */
   .main-nav {display: block;}
+
   .main-nav ul {
     min-height: 100%;
     list-style: none;
@@ -189,7 +214,9 @@ footer ul {
     justify-content: center;
     gap: 2rem;
   }
+
   .main-nav a {
+    text-decoration: none;
     height: 100%;
     text-align: center;
     padding: .8rem;
@@ -204,7 +231,7 @@ footer ul {
   }
 
 
-  /* Main navigation. The login option (wider screen) */
+  /* Main navigation. The login option */
   .log_on a {
     background-image: linear-gradient(
       to bottom,
@@ -221,37 +248,31 @@ footer ul {
   }
 
 
-  /* The mobile main navigation (wider screen) */
-  .hero button {display: none;}
-
-
-  /* The content wrapper (wider screen) */
-  .content-wrapper {
-    display: flex;
-    gap: 1rem;
-  }
-  .content-wrapper > * {flex: 1;}
-
-
-  /* The aside content (wider screen) */
+  /* The aside content */
   aside {
     display: block;
     padding-block-start: 3rem;
+    grid-area: aside;
   }
+
   aside ol {
     margin: auto 2rem;
     padding: 0;
   }
 
 
-  /* The main content (wider screen) */
-  .content-wrapper main {flex: 6;}
+  /* The main content */
+  main {grid-area: main;}
 
 
-  /* Blogs list (wider screen) */
+  /* Blogs list */
   .card {
     flex: 1 1 18rem;
   }
 
   .latest {flex-basis: 100%;}
+
+
+  /* The footer */
+  footer {grid-area: footer;}
 }
