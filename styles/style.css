@@ -26,8 +26,6 @@ body {
     blue,
     navy
     );
-  display: flex;
-  justify-content: space-between;
   color: #eee;
 }
 
@@ -40,6 +38,8 @@ footer a {
 
 /* Header. The logo */
 .logo {
+  display: flex;
+  justify-content: space-between;
   padding-block: .53rem;
   text-align: center;
   font-weight: bold;
@@ -51,7 +51,8 @@ footer a {
   font-size: 1.5rem;
   transition: .5s text-shadow;
 }
-.hero .logo {margin-inline-start: 1rem;}
+
+.hero .logo {margin-inline: 1rem .5rem;}
 .hero .logo a:is(:hover, :focus) {
   text-shadow:
     -2px -2px 4px,
@@ -62,20 +63,53 @@ footer a {
 /* Header. The main navigation */
 .main-nav {
   display: none;
+  flex: 1;
+  order: 1;
 }
 
+.main-nav ul {margin: 0;}
+
+.main-nav a {
+  text-decoration: none;
+  padding: .5rem;
+}
+.main-nav a:is(:hover, :focus),
+.logo button:is(:active) {
+  background-image: linear-gradient(
+    to bottom,
+    dodgerblue,
+    blue
+  );
+}
+
+/* Main navigation. The login option */
+.log_on a {
+  background-image: linear-gradient(
+    to bottom,
+    firebrick,
+    maroon
+  );
+}
+.log_on a:is(:hover, :focus) {
+  background-image: linear-gradient(
+    to bottom,
+    tomato,
+    red
+  );
+}
+  
 
 /* Main navigation, The mobile version */
 .hero button {
   border: 2px solid;
-  border-radius: 9.5px;
+  border-radius: 10px;
   display: flex;
+  padding: .5rem;
   background-color: transparent;
   flex-direction: column;
   justify-content: center;
   gap: .3rem;
   flex-grow: 0;
-  margin-inline-end: 1rem;
 }
 
 .hero button span {
@@ -87,6 +121,7 @@ footer a {
 }
 
 
+/* The aside content */
 aside {display: none;}
 
 
@@ -185,6 +220,7 @@ footer ul {
   body {
     display: grid;
     grid-template-columns: 1fr 6fr 1fr;
+    grid-auto-rows: auto 1fr;
     grid-template-areas:
       "header header header"
       "aside main ."
@@ -193,13 +229,19 @@ footer ul {
 
 
   /* The header; The main navigation */
-  header {grid-area: header;}
-
-  .hero {justify-content: space-evenly;}
+  .hero {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: stretch;
+  }
 
   .hero button {display: none;}
 
-  .hero .logo {margin-inline-start: 0;}
+  .hero .logo {
+    margin-inline: 0;
+    justify-self: center;
+  }
 
 
   /* The main navigation */
@@ -207,9 +249,7 @@ footer ul {
 
   .main-nav ul {
     min-height: 100%;
-    list-style: none;
     display: flex;
-    padding: 0;
     margin: 0;
     justify-content: center;
     gap: 2rem;
@@ -221,30 +261,6 @@ footer ul {
     text-align: center;
     padding: .8rem;
     border: 1px solid black;
-  }
-  .main-nav a:is(:hover, :focus) {
-    background-image: linear-gradient(
-      to bottom,
-      dodgerblue,
-      blue
-    );
-  }
-
-
-  /* Main navigation. The login option */
-  .log_on a {
-    background-image: linear-gradient(
-      to bottom,
-      firebrick,
-      maroon
-    );
-  }
-  .log_on a:is(:hover, :focus) {
-    background-image: linear-gradient(
-      to bottom,
-      tomato,
-      red
-    );
   }
 
 

@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Blog_ger</title>
+
   <link rel="stylesheet" href="styles/sanitize/sanitize.css">
   <link rel="stylesheet" href="styles/sanitize/typography.css">
   <link rel="stylesheet" href="styles/style.css">
@@ -12,9 +14,15 @@
   <header class="hero">
     <div class="logo">
       <a href="index.html">Blog_ger</a>
+      
+      <button type="button" onclick="openMainNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
 
-    <nav class="main-nav">
+    <nav class="main-nav" id="mainNav">
       <ul>
         <li><a href="#">Новости</a></li>
         <li><a href="blog/index.html">Блоги</a></li>
@@ -23,14 +31,6 @@
         <li class="log_on"><a href="#">Вход</a></li>
       </ul>
     </nav>
-
-    <div class="empty"></div>
-
-    <button type="button">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
   </header>
 
   <aside>
@@ -71,5 +71,7 @@
 
     <a href="#" class="donate">Поддержать</a>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
