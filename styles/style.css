@@ -1,7 +1,7 @@
 /* 
   Every component begins with 'The';
 
-  For wider screens (48em or 768px),
+  For wider screens (48em because user's font-size setting),
   find '(wider screens)'
 */
 
@@ -48,7 +48,7 @@ footer a {
 .logo a {
   text-decoration: none;
   display: inline-block;
-  width: min-content;
+  inline-size: min-content;
   font-size: 1.5rem;
   transition: .5s text-shadow;
 }
@@ -115,8 +115,8 @@ footer a {
 
 .hero button span {
   font-size: .6rem;
-  width: 2rem;
-  height: 1ch;
+  inline-size: 2rem;
+  block-size: 1ch;
   background-color: #fff;
   border-radius: 1rem;
 }
@@ -148,7 +148,7 @@ hr {margin-block: min(6vw, 1.5rem);}
 .blog-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 4vh;
+  gap: 4vb;
 }
 
 
@@ -164,7 +164,10 @@ hr {margin-block: min(6vw, 1.5rem);}
 
 
 /* Blog card. The components */
-.card header {text-align: center; font-weight: bolder;}
+.card header {
+  text-align: center;
+  font-weight: bolder;
+}
 
 .latest {background: linear-gradient(#21BAAC, #23B67E);}
 
@@ -177,7 +180,6 @@ footer {
   padding: 1rem;
   justify-content: space-around;
   align-items: center;
-  margin-block-start: auto;
   background-color: gray;
 }
 
@@ -234,7 +236,6 @@ footer ul {
     grid-area: header;
     display: grid;
     grid-template-columns: repeat(3, auto);
-    justify-content: stretch;
   }
 
   .hero button {display: none;}
@@ -249,7 +250,7 @@ footer ul {
   .main-nav {display: block;}
 
   .main-nav ul {
-    min-height: 100%;
+    min-block-size: 100%;
     display: flex;
     margin: 0;
     justify-content: center;
@@ -258,7 +259,7 @@ footer ul {
 
   .main-nav a {
     text-decoration: none;
-    height: 100%;
+    block-size: 100%;
     text-align: center;
     padding: .8rem;
     border: 1px solid black;
@@ -283,9 +284,7 @@ footer ul {
 
 
   /* Blogs list */
-  .card {
-    flex: 1 1 18rem;
-  }
+  .card {flex: 1 1 18rem;}
 
   .latest {flex-basis: 100%;}
 
